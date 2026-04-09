@@ -127,7 +127,7 @@ export function App() {
                   size="sm"
                   className="px-0 text-muted-foreground hover:text-foreground"
                 >
-                  <a href="https://github.com" target="_blank" rel="noreferrer">
+                  <a href="https://github.com/DHughes987/DHughes987" target="_blank" rel="noreferrer">
                     <Bot className="size-4 text-primary" /> GitHub
                   </a>
                 </Button>
@@ -151,7 +151,7 @@ export function App() {
                   size="sm"
                   className="px-0 text-muted-foreground hover:text-foreground"
                 >
-                  <a href="mailto:hello@example.com">
+                  <a href="mailto:dylanhughes765@gmail.com">
                     <Mail className="size-4 text-primary" /> Email
                   </a>
                 </Button>

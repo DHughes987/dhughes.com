@@ -3,7 +3,7 @@
   "configVersion": 1,
   "workspaces": {
     "": {
-      "name": "vite-app",
+      "name": "dhughes",
       "dependencies": {
         "@fontsource-variable/outfit": "^5.2.8",
         "@tailwindcss/vite": "^4.2.1",
