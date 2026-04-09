@@ -19,40 +19,46 @@ import {
 import { Separator } from "@/components/ui/separator"
 
 const projects = [
-  {
-    title: "Studio landing page",
+    {
+    title: "Bluescope Technologies",
     description:
-      "A conversion-focused marketing site with crisp motion, CMS-driven content, and strong Lighthouse scores.",
-    tags: ["React", "TypeScript", "Tailwind"],
+      "Built an e-commerce website while working for Bluescope Technologies with over 40k products, focusing on scale, catalogue usability, and a smooth shopping experience.",
+    tags: ["Magento 2", "LAMP", "E-commerce"],
+    },
+    {
+    title: "Sustain.Life",
+    description:
+      "Worked on a sustainability emissions calculator for Sustain.Life, helping shape a product that made complex environmental data more usable and actionable.",
+    tags: ["TypeScript", "Rush.js", "GraphQL"],
   },
   {
-    title: "E-commerce refresh",
+    title: "Realta",
     description:
-      "A modern storefront redesign focused on trust, speed, and a smoother mobile buying experience.",
-    tags: ["UI/UX", "Performance", "Stripe"],
-  },
-  {
-    title: "Internal dashboard",
-    description:
-      "A clean operations dashboard with reusable components, better hierarchy, and accessible interactions.",
-    tags: ["Design Systems", "Charts", "Admin"],
+      "Currently building an AML platform with a strong focus on clarity, maintainability, and secure user flows that handle sensitive data with care.",
+    tags: ["React", "TypeScript", "Microfrontends", "shadcn/ui"],
   },
 ]
 
 const skills = [
   "React",
   "TypeScript",
-  "Vite",
+  "Tailwind CSS",
   "shadcn/ui",
-  "Tailwind",
+  "Vite",
+  "Next.js",
   "Node.js",
-  "Figma",
-  "Accessibility",
-  "Scrum Master",
-  "Team Lead",
   "AWS",
   "OAuth",
   "Git",
+  "Figma",
+  "Agile / Scrum",
+]
+
+const hobbies = [
+  "Magic: The Gathering",
+  "Dungeons & Dragons",
+  "Cooking",
+  "Video Games",
 ]
 
 export function App() {
@@ -73,16 +79,31 @@ export function App() {
               D. Hughes
             </a>
 
-            <nav className="hidden items-center gap-6 text-sm text-muted-foreground md:flex">
-              <a href="#projects" className="transition-colors hover:text-foreground">
-                Projects
-              </a>
-              <a href="#about" className="transition-colors hover:text-foreground">
-                About
-              </a>
-              <a href="#contact" className="transition-colors hover:text-foreground">
-                Contact
-              </a>
+            <nav className="hidden items-center gap-4 md:flex">
+              <Button
+                asChild
+                variant="link"
+                size="sm"
+                className="px-0 text-muted-foreground hover:text-foreground"
+              >
+                <a href="#projects">Projects</a>
+              </Button>
+              <Button
+                asChild
+                variant="link"
+                size="sm"
+                className="px-0 text-muted-foreground hover:text-foreground"
+              >
+                <a href="#about">About</a>
+              </Button>
+              <Button
+                asChild
+                variant="link"
+                size="sm"
+                className="px-0 text-muted-foreground hover:text-foreground"
+              >
+                <a href="#contact">Contact</a>
+              </Button>
             </nav>
           </div>
         </header>
@@ -92,31 +113,30 @@ export function App() {
             <div className="space-y-6">
               <Badge variant="outline" className="gap-2 px-3 py-1 text-xs">
                 <Sparkles className="size-3.5 text-primary" />
-                Available for freelance and full-time work
+                Open to ideas, projects, and opportunities
               </Badge>
 
               <div className="space-y-4">
-                <p className="text-sm font-medium text-primary">
-                  Designer-minded frontend developer
-                </p>
+                <p className="text-sm font-medium text-primary">Software Engineer</p>
                 <h1 className="max-w-2xl text-4xl font-semibold tracking-tight text-balance md:text-6xl">
-                  I build modern websites that feel fast, sharp, and memorable.
+                  Hey, I&apos;m Dylan.
                 </h1>
                 <p className="max-w-xl text-base leading-7 text-muted-foreground md:text-lg">
-                  I create polished digital experiences with strong visual hierarchy,
-                  thoughtful interactions, and a focus on performance.
+                  I build fast, clean, and genuinely nice-to-use web experiences
+                  with a focus on performance, security, accessibility, and UI
+                  that actually makes sense.
                 </p>
               </div>
 
               <div className="flex flex-wrap gap-3">
                 <Button asChild size="lg" className="shadow-lg shadow-primary/20">
-                  <a href="mailto:hello@example.com">
-                    Let&apos;s work together
+                  <a href="mailto:dylanhughes765@gmail.com">
+                    Get in touch
                     <ArrowRight className="size-4" />
                   </a>
                 </Button>
                 <Button asChild variant="outline" size="lg">
-                  <a href="#projects">View projects</a>
+                  <a href="#projects">View work</a>
                 </Button>
               </div>
 
@@ -161,9 +181,9 @@ export function App() {
             <Card className="border-border/70 bg-card/80 shadow-2xl shadow-black/5 backdrop-blur-xl">
               <CardHeader className="flex flex-row items-start justify-between gap-4 space-y-0">
                 <div className="space-y-1">
-                  <CardTitle>Selected focus</CardTitle>
+                  <CardTitle>Current focus</CardTitle>
                   <CardDescription>
-                    Building cool, high-trust web experiences
+                    Fast, polished products that feel obvious to use
                   </CardDescription>
                 </div>
                 <Badge>2026</Badge>
@@ -174,7 +194,8 @@ export function App() {
                   <CardContent className="p-4">
                     <p className="text-xs text-muted-foreground">Now</p>
                     <p className="mt-1 text-lg font-medium">
-                      Frontend systems, portfolio sites, and product marketing pages
+                      Creating high-quality portfolio sites and product pages,
+                      while building reusable frontend systems.
                     </p>
                   </CardContent>
                 </Card>
@@ -182,17 +203,17 @@ export function App() {
                 <div className="grid gap-3 sm:grid-cols-2">
                   <Card className="rounded-2xl border-border/60 shadow-none">
                     <CardContent className="p-4">
-                      <p className="text-2xl font-semibold">5+</p>
+                      <p className="text-sm font-semibold">Simple over clever</p>
                       <p className="text-sm text-muted-foreground">
-                        launch-ready builds
+                        Clean code and maintainability matter.
                       </p>
                     </CardContent>
                   </Card>
                   <Card className="rounded-2xl border-border/60 shadow-none">
                     <CardContent className="p-4">
-                      <p className="text-2xl font-semibold">100%</p>
+                      <p className="text-sm font-semibold">Bridging UI + server</p>
                       <p className="text-sm text-muted-foreground">
-                        attention to detail
+                        Levelling up Node.js, AWS, and OAuth.
                       </p>
                     </CardContent>
                   </Card>
@@ -205,9 +226,9 @@ export function App() {
 
           <section id="projects" className="py-10 md:py-14">
             <div className="mb-6 space-y-3">
-              <p className="text-sm font-medium text-primary">Projects</p>
+              <p className="text-sm font-medium text-primary">Featured work</p>
               <h2 className="text-2xl font-semibold md:text-3xl">
-                A few things I&apos;d want people to remember
+                Work Experience
               </h2>
             </div>
 
@@ -248,23 +269,23 @@ export function App() {
             id="about"
             className="grid gap-8 py-10 md:grid-cols-[0.9fr_1.1fr] md:py-14"
           >
-            <div className="space-y-3">
+            <div className="flex flex-col justify-center space-y-3">
               <p className="text-sm font-medium text-primary">About</p>
               <h2 className="text-2xl font-semibold md:text-3xl">
-                Clean design, real usability, no fluff.
+                Good UI feels obvious.
               </h2>
               <p className="text-muted-foreground">
-                I enjoy turning rough ideas into interfaces that feel premium,
-                readable, and easy to use across devices.
+                I like UI that feels fast and effortless, clean code that stays
+                maintainable, and simple solutions over clever ones.
               </p>
             </div>
 
             <Card className="border-border/70 bg-card/70">
               <CardContent className="space-y-4 p-5">
                 <p className="text-sm leading-7 text-muted-foreground">
-                  My approach blends frontend engineering with product taste: fast
-                  load times, consistent components, and visuals that feel modern
-                  without getting in the way.
+                  I&apos;m big on performance, accessibility, security, and products
+                  that people actually enjoy using. Smart people admire simplicity;
+                  others admire complexity.
                 </p>
 
                 <div className="flex flex-wrap gap-2">
@@ -273,6 +294,23 @@ export function App() {
                       {skill}
                     </Badge>
                   ))}
+                </div>
+
+                <Separator />
+
+                <div className="space-y-3">
+                  <p className="text-sm font-medium text-foreground">Outside of work</p>
+                  <p className="text-sm text-muted-foreground">
+                    A bit nerdy in the best way, especially when it comes to card
+                    games, fantasy worlds, and anything social and strategic.
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    {hobbies.map((hobby) => (
+                      <Badge key={hobby} variant="outline" className="text-sm">
+                        {hobby}
+                      </Badge>
+                    ))}
+                  </div>
                 </div>
               </CardContent>
             </Card>
@@ -284,21 +322,21 @@ export function App() {
             <Card className="border-border/70 bg-card/80">
               <CardContent className="p-6 md:p-8">
                 <div className="space-y-2">
-                  <p className="text-sm font-medium text-primary">Contact</p>
+                  <p className="text-sm font-medium text-primary">Get in touch</p>
                   <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
                     <div>
                       <h2 className="text-2xl font-semibold md:text-3xl">
-                        Have a project in mind?
+                        Open to chatting about ideas, projects, or opportunities.
                       </h2>
                       <p className="mt-2 max-w-xl text-muted-foreground">
-                        Let&apos;s make something that looks great and feels even better
-                        to use.
+                        If you like my work or want to build something thoughtful,
+                        feel free to reach out.
                       </p>
                     </div>
 
                     <Button asChild size="lg">
-                      <a href="mailto:hello@example.com">
-                        Say hello
+                      <a href="mailto:dylanhughes765@gmail.com">
+                        Email Dylan
                         <ArrowRight className="size-4" />
                       </a>
                     </Button>
