@@ -151,7 +151,7 @@ export default function LandingPage() {
                 <Button asChild variant="outline" size="lg" className="gap-2">
                   <Link to="/space">
                     <Gamepad2 className="size-4" />
-                    Launch Odyssey
+                    Launch Odyssey (WIP)
                   </Link>
                 </Button>
               </div>

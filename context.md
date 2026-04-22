@@ -1,5 +1,22 @@
 # Space Odyssey: Project Explorer Context
 
+## Session Log: April 22, 2026
+
+### 5. Major Feature Expansion — "Make It Awesome"
+- **Centralized Data**: Eliminated the DRY violation where `SpaceProject` data was duplicated in both `SpaceExplorerPage.tsx` and `FlightControls.tsx`. All project data now lives in `src/data/projects.ts` as the single source of truth.
+- **Enriched Project Type**: `SpaceProject` now includes `longDescription`, `role`, `year`, `highlights[]`, and optional `url` fields with rich real content for all three projects.
+- **E-key Docking System**: Pressing `E` when within detection radius of a planet triggers a dock. `FlightControls` now accepts `onDock` and `isDocked` props. Movement pauses while docked. E-key tracks press state to prevent repeated triggers.
+- **Speed Boost**: Holding `SHIFT` now applies a `2.5×` speed multiplier on top of base thruster speed, giving snappier traversal across the sector.
+- **Project Detail Modal** (`ProjectModal.tsx`): A full-screen blurred overlay that slides up when the player docks. Shows title, role, year, long description, mission highlights (with color-accented Zap icons), and tech tags. Dismisses on ESC or backdrop click. Animated entry via `tw-animate-css`. Note: avoided `framer-motion` due to type conflicts with `framer-motion-3d`.
+- **Navigation Radar** (`NavigationRadar.tsx`): A 2D canvas-based radar rendered bottom-right as a UI overlay. Uses `requestAnimationFrame` to draw every frame, reading camera position/rotation from mutable refs (bypassing React state). Planets appear as glowing colored dots. Ship is a white triangle pointing forward. Planets outside range clamp to the edge. Reads ship orientation via yaw angle to keep "forward = up" on the radar.
+- **ShipTracker** (`ShipTracker.tsx`): Minimal R3F component inside the Canvas that copies `camera.position` and `camera.quaternion` into mutable refs each frame. These refs are read by `NavigationRadar` without triggering React re-renders.
+- **Animated Terminal Log**: `HUDInterface` now fully animates its terminal log feed. Lines appear one-by-one (220ms apart) via `useEffect` + `setTimeout` array with proper cleanup. When a planet is in range, additional contextual lines appear (signal detection, lock-on, uplink confirmation, `[E] TO DOCK` prompt). Project-specific lines are styled brighter.
+- **Live Telemetry Bars**: The HUD's telemetry chart bars now actually animate — using a `setInterval` (120ms) that updates bar heights via direct DOM ref manipulation (`barRefs`), avoiding any React re-renders.
+- **Distance Labels on Planets**: Each `ProjectPlanet` now tracks camera distance via `useThree` + `useFrame` and updates a `<span>` DOM ref directly with `{distance}u`. Rendered via Drei's `Html` component. Zero React re-renders.
+- **Approach Ring**: A torus mesh around each planet becomes visible when the ship is within 65 units. It pulses in scale and opacity using `Math.sin(clock.elapsedTime)`.
+- **Mission Briefing Enhancement**: The briefing screen now lists all sector targets (planets) with their color dot and year range as a quick reference.
+- **Bug Fix**: `framer-motion` `motion.div` and `AnimatePresence` caused TS errors (`className` not found) due to conflicts with `framer-motion-3d`. Replaced with CSS animation classes from `tw-animate-css`.
+
 ## Session Log: April 16, 2026
 
 ### 1. Initial Request: The Handheld Console

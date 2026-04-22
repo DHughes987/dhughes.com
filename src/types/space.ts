@@ -4,10 +4,14 @@ export interface SpaceProject {
   id: string
   title: string
   description: string
+  longDescription: string
+  role: string
+  year: string
   tags: string[]
+  highlights: string[]
   color: string
   position: [number, number, number]
-  details?: string
+  url?: string
 }
 
 export interface ShipState {

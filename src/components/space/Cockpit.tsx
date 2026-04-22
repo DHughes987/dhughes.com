@@ -1,5 +1,5 @@
-import { useRef } from "react"
-import { useFrame, useThree } from "@react-three/fiber"
+import { useEffect, useRef } from "react"
+import { useThree } from "@react-three/fiber"
 import * as THREE from "three"
 import { Html } from "@react-three/drei"
 import HUDInterface from "./HUDInterface"
@@ -13,13 +13,16 @@ export default function Cockpit({ activeProject }: CockpitProps) {
   const group = useRef<THREE.Group>(null)
   const { camera } = useThree()
 
-  useFrame(() => {
-    if (group.current) {
-      // Sync cockpit position to camera
-      group.current.position.copy(camera.position)
-      group.current.quaternion.copy(camera.quaternion)
+  useEffect(() => {
+    if (!group.current) return
+
+    // Parent cockpit to camera so POV stays stable with no movement snap.
+    camera.add(group.current)
+
+    return () => {
+      camera.remove(group.current as THREE.Object3D)
     }
-  })
+  }, [camera])
 
   return (
     <group ref={group}>
@@ -43,19 +46,19 @@ export default function Cockpit({ activeProject }: CockpitProps) {
         <meshStandardMaterial color="#1e293b" metalness={0.8} roughness={0.2} />
       </mesh>
 
-      {/* Dashboard - Moving it way closer and up so it's impossible to miss */}
-      <group position={[0, -0.8, -1.2]} rotation={[-0.5, 0, 0]}>
+      {/* Dashboard */}
+      <group position={[0, -1.15, -1.9]} rotation={[-0.42, 0, 0]}>
         {/* Main Dashboard Body */}
         <mesh castShadow receiveShadow>
-          <boxGeometry args={[4.5, 1.2, 0.4]} />
+          <boxGeometry args={[3.6, 0.7, 0.25]} />
           <meshStandardMaterial color="#0f172a" roughness={0.5} metalness={0.8} />
         </mesh>
 
         {/* The Holographic HUD */}
-        <group position={[0, 0.3, 0.25]}>
+        <group position={[0, 0.22, 0.16]}>
             <Html
               transform
-              distanceFactor={1.5}
+              distanceFactor={0.95}
               position={[0, 0, 0]}
               className="pointer-events-none"
             >
@@ -63,12 +66,6 @@ export default function Cockpit({ activeProject }: CockpitProps) {
             </Html>
         </group>
       </group>
-
-      {/* Floor / Lower Frame */}
-      <mesh position={[0, -2, -1]}>
-        <boxGeometry args={[8, 0.5, 4]} />
-        <meshStandardMaterial color="#0f172a" />
-      </mesh>
 
       {/* Window Tint/Glass */}
       <mesh position={[0, 0, -3]}>
