@@ -1,0 +1,17 @@
+service: dhughes-website
+frameworkVersion: "4"
+
+provider:
+  name: aws
+  region: eu-west-1
+
+plugins:
+  - serverless-s3-sync
+
+custom:
+  siteBucketName: ${env:S3_BUCKET}
+  s3Sync:
+    - bucketName: ${self:custom.siteBucketName}
+      localDir: dist
+      deleteRemoved: false
+      acl: public-read
